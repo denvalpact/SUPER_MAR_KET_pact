@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | TRECK World Supermarket</title>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #2c8a4a;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        /* Main Content */
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 150px);
+            padding: 2rem;
+        }
+        
+        .register-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+            padding: 2.5rem;
+        }
+        
+        .register-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .register-header h2 {
+            color: #2c8a4a;
+            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .register-header p {
+            color: #666;
+            margin-top: 0;
+        }
+        
+        /* Form Styles */
+        .register-form {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        .form-group input, 
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #2c8a4a;
+            outline: none;
+        }
+        
+        .name-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .password-strength {
+            height: 5px;
+            background-color: #eee;
+            border-radius: 5px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+        
+        .strength-meter {
+            height: 100%;
+            width: 0%;
+            background-color: #ff6b00;
+            transition: width 0.3s, background-color 0.3s;
+        }
+        
+        .password-hints {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        
+        .terms-agreement {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .terms-agreement input {
+            margin-right: 0.8rem;
+            margin-top: 0.2rem;
+        }
+        
+        .terms-agreement label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .terms-agreement a {
+            color: #2c8a4a;
+            text-decoration: none;
+        }
+        
+        .terms-agreement a:hover {
+            text-decoration: underline;
+        }
+        
+        .register-button {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #2c8a4a;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .register-button:hover {
+            background-color: #247a3a;
+        }
+        
+        /* Sign In Section */
+        .signin-section {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .signin-section p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .signin-link {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background-color: white;
+            color: #2c8a4a;
+            border: 1px solid #2c8a4a;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .signin-link:hover {
+            background-color: #f0f8f0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 480px) {
+            .register-container {
+                padding: 1.5rem;
+            }
+            
+            .name-fields {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="treck-logo.png" alt="TRECK Logo">
+            <h1>TRECK World Supermarket</h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <div class="register-container">
+            <div class="register-header">
+                <h2>Create Your Account</h2>
+                <p>Join TRECK World Supermarket to enjoy exclusive benefits and rewards</p>
+            </div>
+            
+            <form class="register-form" id="registrationForm">
+                <div class="name-fields">
+                    <div class="form-group">
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="last-name" name="last-name" placeholder="Enter your last name" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Create Password</label>
+                    <input type="password" id="password" name="password" placeholder="Create a password" required>
+                    <div class="password-strength">
+                        <div class="strength-meter" id="strengthMeter"></div>
+                    </div>
+                    <div class="password-hints">
+                        <p>Password must contain at least:</p>
+                        <ul>
+                            <li id="length-check">8 characters</li>
+                            <li id="uppercase-check">1 uppercase letter</li>
+                            <li id="number-check">1 number</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="preferred-store">Preferred Store (Optional)</label>
+                    <select id="preferred-store" name="preferred-store">
+                        <option value="">Select your preferred store</option>
+                        <option value="kampala-main">Kampala Main Branch</option>
+                        <option value="kampala-east">Kampala East Branch</option>
+                        <option value="entebbe">Entebbe Branch</option>
+                        <option value="jinja">Jinja Branch</option>
+                    </select>
+                </div>
+                
+                <div class="terms-agreement">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">
+                        I agree to the <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>, 
+                        and I consent to receive email updates about special offers and promotions.
+                    </label>
+                </div>
+                
+                <button type="submit" class="register-button">Create Account</button>
+            </form>
+            
+            <div class="signin-section">
+                <p>Already have an account?</p>
+                <a href="signin.html" class="signin-link">Sign In</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="super1.html">Home</a>
+            <a href="contact.html">Customer Service</a>
+        </div>
+        <p>&copy; 2023 TRECK World Supermarket. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Password strength indicator
+        const passwordInput = document.getElementById('password');
+        const strengthMeter = document.getElementById('strengthMeter');
+        const lengthCheck = document.getElementById('length-check');
+        const uppercaseCheck = document.getElementById('uppercase-check');
+        const numberCheck = document.getElementById('number-check');
+        
+        passwordInput.addEventListener('input', function() {
+            const password = this.value;
+            let strength = 0;
+            
+            // Length check
+            if (password.length >= 8) {
+                strength += 1;
+                lengthCheck.style.color = '#2c8a4a';
+                lengthCheck.innerHTML = '<i class="fas fa-check"></i> 8 characters';
+            } else {
+                lengthCheck.style.color = '#666';
+                lengthCheck.innerHTML = '8 characters';
+            }
+            
+            // Uppercase check
+            if (/[A-Z]/.test(password)) {
+                strength += 1;
+                uppercaseCheck.style.color = '#2c8a4a';
+                uppercaseCheck.innerHTML = '<i class="fas fa-check"></i> 1 uppercase letter';
+            } else {
+                uppercaseCheck.style.color = '#666';
+                uppercaseCheck.innerHTML = '1 uppercase letter';
+            }
+            
+            // Number check
+            if (/[0-9]/.test(password)) {
+                strength += 1;
+                numberCheck.style.color = '#2c8a4a';
+                numberCheck.innerHTML = '<i class="fas fa-check"></i> 1 number';
+            } else {
+                numberCheck.style.color = '#666';
+                numberCheck.innerHTML = '1 number';
+            }
+            
+            // Update strength meter
+            const width = (strength / 3) * 100;
+            strengthMeter.style.width = width + '%';
+            
+            // Change color based on strength
+            if (strength === 1) {
+                strengthMeter.style.backgroundColor = '#ff6b00';
+            } else if (strength === 2) {
+                strengthMeter.style.backgroundColor = '#ffbb00';
+            } else if (strength === 3) {
+                strengthMeter.style.backgroundColor = '#2c8a4a';
+            } else {
+                strengthMeter.style.backgroundColor = '#ff6b00';
+            }
+        });
+        
+        // Form submission handling
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const firstName = document.getElementById('first-name').value;
+            const lastName = document.getElementById('last-name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            
+            // Simple validation
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            if (!document.getElementById('terms').checked) {
+                alert('Please agree to the Terms of Service and Privacy Policy');
+                return;
+            }
+            
+            // In a real implementation, you would send this data to your registration system
+            console.log('Registration submitted:', {
+                firstName,
+                lastName,
+                email,
+                password: '******' // Never log actual passwords
+            });
+            
+            // For demo purposes, just show a success message
+            alert(`Thank you for registering, ${firstName}! A verification email has been sent to ${email}.`);
+            
+            // In production, you would:
+            // 1. Send verification email
+            // 2. Redirect to verification page or account dashboard
+            // window.location.href = 'verify-email.html';
+        });
+        
+        // In production, you would:
+        // 1. Add more robust validation
+        // 2. Connect to your backend registration system
+        // 3. Implement proper error handling
+        // 4. Add CAPTCHA or other spam prevention
+    </script>
+</body>
+</html>

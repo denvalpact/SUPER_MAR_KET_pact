@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Promotions | TRECK World Supermarket</title>
+    <style>
+        /* Reusing header/footer styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #2c8a4a;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        .auth-button {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .sign-in {
+            background-color: transparent;
+            border: 1px solid white;
+            color: white;
+        }
+        .register {
+            background-color: white;
+            color: #2c8a4a;
+            border: 1px solid white;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* Promotions page specific styles */
+        .promo-hero {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('promo-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        .promo-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .promo-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        .section-title {
+            color: #2c8a4a;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .promo-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        .promo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .promo-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff6b00;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        .promo-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        .promo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .promo-card:hover .promo-image img {
+            transform: scale(1.05);
+        }
+        .promo-content {
+            padding: 1.5rem;
+        }
+        .promo-title {
+            font-size: 1.3rem;
+            margin: 0 0 0.5rem 0;
+            color: #2c8a4a;
+        }
+        .promo-price {
+            font-weight: bold;
+            color: #ff6b00;
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+        .original-price {
+            text-decoration: line-through;
+            color: #888;
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+        }
+        .promo-description {
+            color: #666;
+            margin: 0.5rem 0 1rem;
+        }
+        .promo-expiry {
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .promo-expiry i {
+            margin-right: 0.5rem;
+        }
+        .promo-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+        .clip-coupon {
+            background-color: #2c8a4a;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+        .clip-coupon:hover {
+            background-color: #247a3a;
+        }
+        .view-details {
+            color: #2c8a4a;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+        .coupon-section {
+            background-color: #f0f8f0;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 3rem 0;
+        }
+        .coupon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .coupon-card {
+            background-color: white;
+            border: 2px dashed #2c8a4a;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .coupon-value {
+            font-size: 1.5rem;
+            color: #ff6b00;
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+        .coupon-desc {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        .coupon-code {
+            background-color: #f9f9f9;
+            padding: 0.5rem;
+            border-radius: 4px;
+            font-family: monospace;
+            margin: 1rem 0;
+        }
+        .loyalty-section {
+            background-color: #fff8e6;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 3rem 0;
+        }
+        .loyalty-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .benefit-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .benefit-card i {
+            color: #2c8a4a;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .countdown-item {
+            background-color: #2c8a4a;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            min-width: 80px;
+        }
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .countdown-label {
+            font-size: 0.8rem;
+        }
+        .weekly-ad {
+            margin: 3rem 0;
+        }
+        .ad-image {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-top: 1rem;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <h1>TRECK World Supermarket</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="super1.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="promotions.html" class="active">Promotions</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li>
+                    <div class="auth-buttons">
+                        <a href="signin.html" class="auth-button sign-in">Sign In</a>
+                        <a href="register.html" class="auth-button register">Register</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="promo-hero">
+        <h1>Current Promotions</h1>
+        <p style="font-size: 1.2rem;">Limited-time offers to help you save more on your grocery shopping</p>
+    </section>
+
+    <!-- Main Content -->
+    <div class="promo-container">
+        <!-- Countdown Timer -->
+        <div class="countdown">
+            <div class="countdown-item">
+                <div class="countdown-number" id="days">03</div>
+                <div class="countdown-label">Days</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="hours">12</div>
+                <div class="countdown-label">Hours</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="minutes">45</div>
+                <div class="countdown-label">Minutes</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="seconds">30</div>
+                <div class="countdown-label">Seconds</div>
+            </div>
+        </div>
+
+        <!-- Weekly Ad Section -->
+        <section class="weekly-ad">
+            <h2 class="section-title">This Week's Flyer</h2>
+            <p style="text-align: center;">Valid until Sunday at closing time</p>
+            <img src="weekly-ad.jpg" alt="Weekly Ad" class="ad-image">
+            <div style="text-align: center; margin-top: 1rem;">
+                <a href="#" style="color: #2c8a4a; font-weight: bold; text-decoration: none;">View Full Flyer →</a>
+            </div>
+        </section>
+
+        <!-- Featured Promotions -->
+        <section>
+            <h2 class="section-title">Featured Deals</h2>
+            <div class="promo-grid">
+                <div class="promo-card">
+                    <span class="promo-badge">BOGO</span>
+                    <div class="promo-image">
+                        <img src="cereal-promo.jpg" alt="Breakfast Cereal">
+                    </div>
+                    <div class="promo-content">
+                        <h3 class="promo-title">Breakfast Cereal</h3>
+                        <p class="promo-price">Buy 1 Get 1 Free</p>
+                        <p class="promo-description">Selected varieties of 12oz+ cereal boxes</p>
+                        <p class="promo-expiry"><i class="fas fa-clock"></i> Ends in 3 days</p>
+                        <div class="promo-actions">
+                            <a href="#" class="view-details">View Details</a>
+                            <button class="clip-coupon">Clip Coupon</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="promo-card">
+                    <span class="promo-badge">50% OFF</span>
+                    <div class="promo-image">
+                        <img src="chicken-promo.jpg" alt="Chicken Breast">
+                    </div>
+                    <div class="promo-content">
+                        <h3 class="promo-title">Boneless Chicken Breast</h3>
+                        <p class="promo-price">5000ugx/lb <span class="original-price">10000ugx/lb</span></p>
+                        <p class="promo-description">Fresh, never frozen. Limit 5lbs per customer.</p>
+                        <p class="promo-expiry"><i class="fas fa-clock"></i> Ends tomorrow</p>
+                        <div class="promo-actions">
+                            <a href="#" class="view-details">View Details</a>
+                            <button class="clip-coupon">Clip Coupon</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="promo-card">
+                    <span class="promo-badge">Bundle</span>
+                    <div class="promo-image">
+                        <img src="bbq-promo.jpg" alt="BBQ Bundle">
+                    </div>
+                    <div class="promo-content">
+                        <h3 class="promo-title">Summer BBQ Bundle</h3>
+                        <p class="promo-price">25000ugx <span class="original-price">35000ugx</span></p>
+                        <p class="promo-description">Includes burgers, buns, chips, and soda</p>
+                        <p class="promo-expiry"><i class="fas fa-clock"></i> All summer long</p>
+                        <div class="promo-actions">
+                            <a href="#" class="view-details">View Details</a>
+                            <button class="clip-coupon">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="promo-card">
+                    <span class="promo-badge">Clearance</span>
+                    <div class="promo-image">
+                        <img src="snacks-promo.jpg" alt="Snacks">
+                    </div>
+                    <div class="promo-content">
+                        <h3 class="promo-title">Snack Items Clearance</h3>
+                        <p class="promo-price">Up to 70% OFF</p>
+                        <p class="promo-description">Selected snack items while supplies last</p>
+                        <p class="promo-expiry"><i class="fas fa-clock"></i> While supplies last</p>
+                        <div class="promo-actions">
+                            <a href="#" class="view-details">View Details</a>
+                            <button class="clip-coupon">Shop Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="promo-card">
+                    <span class="promo-badge">New!</span>
+                    <div class="promo-image">
+                        <img src="organic-promo.jpg" alt="Organic Produce">
+                    </div>
+                    <div class="promo-content">
+                        <h3 class="promo-title">Organic Produce Sale</h3>
+                        <p class="promo-price">20% OFF</p>
+                        <p class="promo-description">All certified organic fruits and vegetables</p>
+                        <p class="promo-expiry"><i class="fas fa-clock"></i> Ends in 5 days</p>
+                        <div class="promo-actions">
+                            <a href="#" class="view-details">View Details</a>
+                            <button class="clip-coupon">Clip Coupon</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="promo-card">
+                    <span class="promo-badge">Online Only</span>
+                    <div class="promo-image">
+                        <img src="delivery-promo.jpg" alt="Delivery">
+                    </div>
+                    <div class="promo-content">
+                        <h3 class="promo-title">Free Delivery</h3>
+                        <p class="promo-price">On orders over 50000ugx</p>
+                        <p class="promo-description">Use code FREESHIP at checkout</p>
+                        <p class="promo-expiry"><i class="fas fa-clock"></i> Ends this month</p>
+                        <div class="promo-actions">
+                            <a href="#" class="view-details">View Details</a>
+                            <button class="clip-coupon">Shop Online</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Digital Coupons Section -->
+        <section class="coupon-section">
+            <h2 class="section-title">Digital Coupons</h2>
+            <p style="text-align: center;">Clip these coupons to your loyalty card for automatic savings at checkout</p>
+            
+            <div class="coupon-grid">
+                <div class="coupon-card">
+                    <h3 style="margin-top: 0;">Milk & Eggs</h3>
+                    <div class="coupon-value">1000ugx OFF</div>
+                    <p class="coupon-desc">When you buy 1 dozen eggs and 1 liter of milk</p>
+                    <div class="coupon-code">TRECK1000</div>
+                    <button class="clip-coupon">Add to Card</button>
+                </div>
+                
+                <div class="coupon-card">
+                    <h3 style="margin-top: 0;">Fresh Bread</h3>
+                    <div class="coupon-value">15% OFF</div>
+                    <p class="coupon-desc">Any freshly baked bread from our bakery</p>
+                    <div class="coupon-code">TRECKBREAD</div>
+                    <button class="clip-coupon">Add to Card</button>
+                </div>
+                
+                <div class="coupon-card">
+                    <h3 style="margin-top: 0;">First Visit</h3>
+                    <div class="coupon-value">5000ugx OFF</div>
+                    <p class="coupon-desc">Your first purchase of 20000ugx or more</p>
+                    <div class="coupon-code">WELCOME5K</div>
+                    <button class="clip-coupon">Add to Card</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loyalty Program Section -->
+        <section class="loyalty-section">
+            <h2 class="section-title">Loyalty Rewards Program</h2>
+            <p style="text-align: center;">Join our free loyalty program and enjoy exclusive benefits and savings</p>
+            
+            <div class="loyalty-benefits">
+                <div class="benefit-card">
+                    <i class="fas fa-tags"></i>
+                    <h3>Exclusive Discounts</h3>
+                    <p>Members-only prices on select items every week</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <i class="fas fa-gift"></i>
+                    <h3>Reward Points</h3>
+                    <p>Earn points on every purchase redeemable for discounts</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <i class="fas fa-birthday-cake"></i>
+                    <h3>Birthday Bonus</h3>
+                    <p>Special gift during your birthday month</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>Personalized Offers</h3>
+                    <p>Customized deals based on your shopping habits</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="clip-coupon" style="padding: 0.8rem 2rem; font-size: 1.1rem;">Join Now - It's Free!</button>
+            </div>
+        </section>
+
+        <!-- Seasonal Promotions -->
+        <section>
+            <h2 class="section-title">Seasonal Specials</h2>
+            <div class="promo-grid">
+                <div class="promo-card">
+                    <div class="promo-image">
+                        <img src="summer-promo.jpg" alt="Summer Specials">
+                    </div>
+                    <div class="promo-content">
+                        <h3 class="promo-title">Summer Refreshment</h3>
+                        <p class="promo-price">Special Prices</p>
+                        <p class="promo-description">On juices, ice creams, and summer essentials</p>
+                        <div class="promo-actions">
+                            <a href="#" class="view-details">View All Summer Deals</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="promo-card">
+                    <div class="promo-image">
+                        <img src="back-to-school.jpg" alt="Back to School">
+                    </div>
+                    <div class="promo-content">
+                        <h3 class="promo-title">Back to School</h3>
+                        <p class="promo-price">Bundle Savings</p>
+                        <p class="promo-description">On lunchbox items and snacks</p>
+                        <div class="promo-actions">
+                            <a href="#" class="view-details">View School Specials</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="super1.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="promotions.html">Promotions</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+        </div>
+        <p>&copy; 2023 TRECK World Supermarket. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Countdown timer
+        function updateCountdown() {
+            const now = new Date();
+            const target = new Date();
+            target.setDate(now.getDate() + 3); // Set to 3 days from now
+            target.setHours(23, 59, 59, 0); // Set to end of day
+            
+            const diff = target - now;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Coupon clipping functionality
+        document.querySelectorAll('.clip-coupon').forEach(button => {
+            button.addEventListener('click', function() {
+                const card = this.closest('.promo-card, .coupon-card');
+                const title = card.querySelector('.promo-title, h3').textContent;
+                alert(`"${title}" coupon has been added to your loyalty card!`);
+            });
+        });
+        
+        // In production, you would:
+        // 1. Connect to a real coupon/loyalty system
+        // 2. Implement user authentication
+        // 3. Add proper error handling
+    </script>
+</body>
+</html>
