@@ -13,6 +13,12 @@
             color: #333;
             line-height: 1.6;
         }
+        .logo img {
+            height: 80px;
+            width: auto;
+            max-width: 100%;
+            height: auto;
+        }
         header {
             background-color: #2c8a4a;
             color: white;
@@ -85,7 +91,7 @@
         
         /* Contact page specific styles */
         .contact-hero {
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('contact-hero.jpg');
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
             height: 300px;
@@ -97,7 +103,7 @@
             color: white;
         }
         .contact-hero h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
         }
         .contact-container {
@@ -108,16 +114,33 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 3rem;
         }
-        .contact-form {
+        .contact-info {
             background-color: #f9f9f9;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+        .contact-info h2 {
+            color: #2c8a4a;
+            margin-top: 0;
+        }
+        .contact-method {
+            margin-bottom: 1.5rem;
+        }
+        .contact-icon {
+            color: #2c8a4a;
+            margin-right: 0.5rem;
+            width: 20px;
+            text-align: center;
+        }
+        .contact-form {
+            background-color: white;
             padding: 2rem;
             border-radius: 8px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
-        .contact-form h2, .contact-info h2 {
+        .contact-form h2 {
             color: #2c8a4a;
             margin-top: 0;
-            font-size: 1.8rem;
         }
         .form-group {
             margin-bottom: 1.5rem;
@@ -131,88 +154,54 @@
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 0.8rem;
+            padding: 0.75rem;
             border: 1px solid #ddd;
             border-radius: 4px;
-            font-size: 1rem;
             font-family: inherit;
         }
         .form-group textarea {
-            height: 120px;
+            min-height: 150px;
         }
         .submit-btn {
             background-color: #2c8a4a;
             color: white;
             border: none;
-            padding: 0.8rem 1.5rem;
+            padding: 0.75rem 1.5rem;
             border-radius: 4px;
-            font-size: 1rem;
             cursor: pointer;
+            font-weight: bold;
             transition: background-color 0.3s;
         }
         .submit-btn:hover {
             background-color: #247a3a;
         }
-        .contact-info {
-            background-color: #f0f8f0;
-            padding: 2rem;
+        .location-map {
+            height: 400px;
+            background-color: #eee;
+            margin: 2rem 0;
             border-radius: 8px;
+            overflow: hidden;
         }
-        .info-item {
-            margin-bottom: 1.5rem;
+        .map-container {
+            width: 100%;
+            height: 100%;
         }
-        .info-item h3 {
-            color: #2c8a4a;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-        }
-        .info-item h3 i {
-            margin-right: 0.5rem;
+        .business-hours {
+            margin-top: 2rem;
         }
         .hours-table {
             width: 100%;
             border-collapse: collapse;
         }
         .hours-table tr:nth-child(even) {
-            background-color: rgba(255,255,255,0.5);
+            background-color: #f2f2f2;
         }
         .hours-table td {
-            padding: 0.5rem;
+            padding: 0.75rem;
             border-bottom: 1px solid #ddd;
         }
         .hours-table td:first-child {
             font-weight: bold;
-        }
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: #2c8a4a;
-            color: white;
-            border-radius: 50%;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-        .social-link:hover {
-            background-color: #247a3a;
-        }
-        .location-map {
-            height: 300px;
-            background-color: #eee;
-            margin-top: 2rem;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            /* In production, you'd embed a real map here */
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -221,6 +210,8 @@
     <!-- Header Section -->
     <header>
         <div class="logo">
+            <img src="https://cdn.leonardo.ai/users/d43ccb45-7f8a-496c-ab82-ad69db755839/generations/dee0fe66-a9ff-40b5-a154-9719f95a00e3/segments/1:4:1/Flux_Dev_A_stylized_illustration_of_the_Trekk_Supermarket_Worl_0.jpg" alt="TRECK World Supermarket Logo" style="height: 80px;">
+        </div>
             <h1>TRECK World Supermarket</h1>
         </div>
         <nav>
@@ -242,69 +233,34 @@
 
     <!-- Hero Section -->
     <section class="contact-hero">
-        <h1>Get in Touch</h1>
-        <p style="font-size: 1.2rem; max-width: 600px;">We'd love to hear from you! Whether you have a question, comment, or concern, please don't hesitate to reach out.</p>
+        <h1>Contact Us</h1>
+        <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">We'd love to hear from you! Reach out with questions, feedback, or special requests.</p>
     </section>
 
     <!-- Main Content -->
     <div class="contact-container">
-        <!-- Contact Form -->
-        <section class="contact-form">
-            <h2>Send Us a Message</h2>
-            <form id="contactForm">
-                <div class="form-group">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone">
-                </div>
-                <div class="form-group">
-                    <label for="subject">Subject</label>
-                    <select id="subject" name="subject">
-                        <option value="general">General Inquiry</option>
-                        <option value="feedback">Feedback/Suggestion</option>
-                        <option value="complaint">Complaint</option>
-                        <option value="wholesale">Wholesale Inquiry</option>
-                        <option value="careers">Careers</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="message">Your Message</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
-        </section>
-
         <!-- Contact Information -->
-        <section class="contact-info">
-            <h2>Contact Information</h2>
+        <div class="contact-info">
+            <h2><i class="fas fa-info-circle contact-icon"></i> Our Information</h2>
             
-            <div class="info-item">
-                <h3><i class="fas fa-map-marker-alt"></i> Address</h3>
-                <p>123 Market Street<br>Kampala, Uganda</p>
+            <div class="contact-method">
+                <h3><i class="fas fa-map-marker-alt contact-icon"></i> Address</h3>
+                <p>Plot 42, Kikoni Road, Makerere<br>Kampala, Uganda</p>
             </div>
             
-            <div class="info-item">
-                <h3><i class="fas fa-phone"></i> Phone</h3>
+            <div class="contact-method">
+                <h3><i class="fas fa-phone contact-icon"></i> Phone</h3>
                 <p>+256 123 456 789</p>
-                <p>Customer Service Hours: 8:00 AM - 8:00 PM Daily</p>
             </div>
             
-            <div class="info-item">
-                <h3><i class="fas fa-envelope"></i> Email</h3>
+            <div class="contact-method">
+                <h3><i class="fas fa-envelope contact-icon"></i> Email</h3>
                 <p>info@treckmarket.com</p>
-                <p>For general inquiries</p>
+                <p>customerservice@treckmarket.com</p>
             </div>
             
-            <div class="info-item">
-                <h3><i class="fas fa-clock"></i> Store Hours</h3>
+            <div class="business-hours">
+                <h3><i class="fas fa-clock contact-icon"></i> Business Hours</h3>
                 <table class="hours-table">
                     <tr>
                         <td>Monday - Friday</td>
@@ -318,29 +274,77 @@
                         <td>Sunday</td>
                         <td>9:00 AM - 8:00 PM</td>
                     </tr>
-                    <tr>
-                        <td>Public Holidays</td>
-                        <td>9:00 AM - 6:00 PM</td>
-                    </tr>
                 </table>
             </div>
             
-            <div class="info-item">
-                <h3><i class="fas fa-share-alt"></i> Follow Us</h3>
-                <div class="social-links">
-                    <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <div class="contact-method">
+                <h3><i class="fas fa-share-alt contact-icon"></i> Follow Us</h3>
+                <div style="font-size: 1.5rem; margin-top: 0.5rem;">
+                    <a href="#" style="color: #2c8a4a; margin-right: 1rem;"><i class="fab fa-facebook"></i></a>
+                    <a href="#" style="color: #2c8a4a; margin-right: 1rem;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color: #2c8a4a; margin-right: 1rem;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color: #2c8a4a;"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
-            
-            <div class="location-map">
-                <!-- In production, replace with embedded Google Maps -->
-                <p style="text-align: center;"><i class="fas fa-map-marked-alt" style="font-size: 2rem; color: #2c8a4a;"></i><br>Store Location Map</p>
-            </div>
-        </section>
+        </div>
+        
+        <!-- Contact Form -->
+        <div class="contact-form">
+            <h2><i class="fas fa-paper-plane contact-icon"></i> Send Us a Message</h2>
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number (Optional)</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Select a subject</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="product">Product Question</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="complaint">Complaint</option>
+                        <option value="wholesale">Wholesale Inquiry</option>
+                        <option value="careers">Careers</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
     </div>
+    
+    <!-- Location Map -->
+    <section style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+        <h2 style="color: #2c8a4a; font-size: 2.2rem; margin-bottom: 1.5rem; text-align: center;">Our Location</h2>
+        <div class="location-map">
+            <!-- Google Maps embed for Makerere Kikoni location -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7536223157963!2d32.56786031475392!3d0.3317229997129669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbb93c5695ab7%3A0x8e21c0a6ef22f1a!2sKikoni%2C%20Kampala%2C%20Uganda!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    class="map-container">
+            </iframe>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -355,28 +359,5 @@
         </div>
         <p>&copy; 2024 TRECK World Supermarket. All rights reserved.</p>
     </footer>
-
-    <script>
-        // Form submission handling
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            
-            // In a real implementation, you would send this data to your server
-            alert(`Thank you, ${name}! Your ${subject} message has been received. We'll respond to you at ${email} shortly.`);
-            
-            // Reset form
-            this.reset();
-        });
-        
-        // In production, you would:
-        // 1. Add form validation
-        // 2. Connect to a backend service to process the form
-        // 3. Add loading states and success/error messages
-    </script>
 </body>
 </html>
