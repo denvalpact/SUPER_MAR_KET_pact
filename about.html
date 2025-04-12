@@ -175,7 +175,7 @@
             align-items: center;
             justify-content: center;
             border-radius: 8px;
-            /* In production, you'd embed a real map here */
+            overflow: hidden;
         }
         .team-grid {
             display: grid;
@@ -216,6 +216,10 @@
         .contact-icon {
             color: #2c8a4a;
             margin-right: 0.5rem;
+        }
+        .map-container {
+            width: 100%;
+            height: 100%;
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -283,50 +287,28 @@
             </div>
         </div>
     </section>
-
-    <!-- History Section -->
-    <section class="about-section">
-        <h2 class="section-title">Our Journey</h2>
-        <p>From humble beginnings to becoming a community staple, here are some key moments in our history:</p>
-        
-        <div class="history-timeline">
-            <div class="timeline-item">
-                <div class="timeline-year">2008</div>
-                <p>TRECK World Supermarket opens its doors as a small 800 sq. ft. grocery store in central Kampala, founded by husband and wife team Joseph and Miriam Treck.</p>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-year">2012</div>
-                <p>We expand to our current 10,000 sq. ft. location to meet growing customer demand, adding a full-service butcher and bakery.</p>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-year">2015</div>
-                <p>Launch of our "Local First" initiative, partnering with over 50 Ugandan farmers and producers to showcase the best of local agriculture.</p>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-year">2018</div>
-                <p>Celebrated our 10th anniversary with a store-wide renovation and the introduction of our popular loyalty rewards program.</p>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-year">2023</div>
-                <p>Recognized as "Best Supermarket in Kampala" by the Uganda Retail Association for the third consecutive year.</p>
-            </div>
-        </div>
-    </section>
-
+    
     <!-- Location Section -->
     <section class="about-section">
         <h2 class="section-title">Visit Us</h2>
         
         <div class="contact-info">
-            <p><i class="fas fa-map-marker-alt contact-icon"></i> <strong>Address:</strong> 123 Market Street, Kampala, Uganda</p>
+            <p><i class="fas fa-map-marker-alt contact-icon"></i> <strong>Address:</strong> Plot 42, Kikoni Road, Makerere, Kampala, Uganda</p>
             <p><i class="fas fa-phone contact-icon"></i> <strong>Phone:</strong> +256 123 456 789</p>
             <p><i class="fas fa-envelope contact-icon"></i> <strong>Email:</strong> info@treckmarket.com</p>
             <p><i class="fas fa-clock contact-icon"></i> <strong>Hours:</strong> Monday-Friday: 8:00 AM - 9:00 PM | Saturday: 8:00 AM - 10:00 PM | Sunday: 9:00 AM - 8:00 PM</p>
         </div>
         
         <div class="location-map">
-            <!-- In production, replace with embedded Google Maps -->
-            <p style="text-align: center;"><i class="fas fa-map-marked-alt" style="font-size: 3rem; color: #2c8a4a;"></i><br>Store Location Map</p>
+            <!-- Google Maps embed for Makerere Kikoni location -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7536223157963!2d32.56786031475392!3d0.3317229997129669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbb93c5695ab7%3A0x8e21c0a6ef22f1a!2sKikoni%2C%20Kampala%2C%20Uganda!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    class="map-container">
+            </iframe>
         </div>
     </section>
 
@@ -337,28 +319,52 @@
         
         <div class="team-grid">
             <div class="team-member">
-                <img src="manager.jpg" alt="Store Manager" class="team-photo">
-                <h3>David Kato</h3>
+                <img src="https://i.postimg.cc/Ypvt2DB1/Whats-App-Image-2025-04-03-at-11-41-02-b7cfa414.jpg" alt="Store Manager" class="team-photo">
+                <h3>Ssessazi Batesita</h3>
                 <p><em>Store Manager</em></p>
-                <p>With TRECK since 2010, David ensures every department runs smoothly.</p>
+                <p>Batesita ensures every department runs smoothly.</p>
             </div>
             <div class="team-member">
-                <img src="produce-manager.jpg" alt="Produce Manager" class="team-photo">
-                <h3>Sarah Nalwoga</h3>
+                <img src="https://i.postimg.cc/Wz8cDks4/Whats-App-Image-2025-04-03-at-11-41-00-97134435.jpg" alt="Produce Manager" class="team-photo">
+                <h3>Tugumenawe Richard</h3>
                 <p><em>Produce Manager</em></p>
-                <p>Sarah personally selects the freshest fruits and vegetables daily.</p>
+                <p>Richard personally selects the freshest fruits and vegetables daily.</p>
             </div>
             <div class="team-member">
-                <img src="butcher.jpg" alt="Head Butcher" class="team-photo">
-                <h3>James Mugisha</h3>
+                <img src="https://i.postimg.cc/Bnk91sf2/Whats-App-Image-2025-04-03-at-11-41-02-9b01cecb.jpg" alt="Head Butcher" class="team-photo">
+                <h3>Kasozi Jonathan</h3>
                 <p><em>Head Butcher</em></p>
-                <p>A master of his craft with over 20 years of experience.</p>
+                <p>A master of his craft with growing experience.</p>
             </div>
             <div class="team-member">
-                <img src="customer-service.jpg" alt="Customer Service" class="team-photo">
-                <h3>Grace Akello</h3>
+                <img src="https://i.postimg.cc/X7204d2H/Whats-App-Image-2025-04-03-at-11-41-01-6dd1f0f6.jpg" alt="Customer Service" class="team-photo">
+                <h3>Aturinda Ritah</h3>
                 <p><em>Customer Service Lead</em></p>
-                <p>Grace and her team are always ready to assist you.</p>
+                <p>Ritah and her team are always ready to assist you.</p>
+            </div>
+            <div class="team-member">
+                <img src="https://i.postimg.cc/s2bjy72d/Whats-App-Image-2025-04-03-at-16-27-03-d315d2cc.jpg" alt="New Team Member" class="team-photo">
+                <h3>Joselyn Elizabeth Nampa</h3>
+                <p><em>Marketing Specialist</em></p>
+                <p>Joselyn is responsible for creating and managing our marketing campaigns.</p>
+            </div>
+            <div class="team-member">
+                <img src="https://i.postimg.cc/SRhmY48g/Whats-App-Image-2025-04-03-at-11-48-48-a879cc0a.jpg" alt="New Team Member" class="team-photo">
+                <h3>Bwire Emmanuel</h3>
+                <p><em>Operations Manager</em></p>
+                <p>He oversees daily operations to ensure everything runs smoothly.</p>
+            </div>
+            <div class="team-member">
+                <img src="https://i.postimg.cc/bwJpt3Df/Whats-App-Image-2025-04-03-at-11-41-00-53e93851.jpg" alt="New Team Member" class="team-photo">
+                <h3>Timothy</h3>
+                <p><em>Inventory Manager</em></p>
+                <p>Timothy ensures that all products are well-stocked and organized for our customers.</p>
+            </div>
+            <div class="team-member">
+                <img src="https://i.postimg.cc/TY2XzCc5/Whats-App-Image-2025-04-03-at-11-41-01-613b0fb0.jpg" alt="New Team Member" class="team-photo">
+                <h3>Kalungi Sven</h3>
+                <p><em>Logistics Manager</em></p>
+                <p>John ensures that all deliveries and supply chains operate efficiently.</p>
             </div>
         </div>
     </section>
